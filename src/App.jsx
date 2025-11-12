@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState, createContext, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { Menu, CheckCircle, Circle, Search, LogIn, UserPlus, Moon, Sun, BookOpen, ClipboardList, Bell, FileDown, Shield, Sparkles, Globe } from 'lucide-react'
 import Spline from '@splinetool/react-spline'
@@ -313,13 +313,13 @@ function Signup() {
   )
 }
 
-const AuthContext = React.createContext(null)
+const AuthContext = createContext(null)
 function AuthProvider({ children }){
   const auth = useAuth()
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
 }
 function useAuthContext(){
-  return React.useContext(AuthContext)
+  return useContext(AuthContext)
 }
 
 function AppShell(){
